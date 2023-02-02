@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "atomic-game-6419c": {
+      "hosting": {
+        "atomic-game": [
+          "atomic-game-6419c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "atomic-game-6419c"
+  }
+}

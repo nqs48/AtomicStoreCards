@@ -97,8 +97,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "atomic-game:build:production",
+            "firebaseProject": "atomic-game-6419c",
+            "firebaseHostingSite": "atomic-game-6419c"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7f921a74-eddf-4f0f-879b-546c2211afcd"
   }
 }
