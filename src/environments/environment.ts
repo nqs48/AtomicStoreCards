@@ -13,6 +13,8 @@ export const environment = {
     messagingSenderId: '715912356968',
   },
   production: false,
+  baseUrlApi: 'https://rickandmortyapi.com/api/character',
+  // baseUrl:"http://localhost:8080",
 };
 
 /*
