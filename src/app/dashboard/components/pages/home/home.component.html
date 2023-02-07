@@ -1,0 +1,22 @@
+<div class="main-container">
+  <app-navbar
+    [src_img]="currentUser?.photoURL"
+    [textContentText]="currentUser?.displayName"
+  ></app-navbar>
+  <button (click)="logout()" class="btn btn-danger ">logout</button>
+  <div class="slider">
+    <div class="container-for">
+      <div class="container" *ngFor="let item of charactersList">
+        <div class="card">
+          <div class="card-border-top">
+            <span>5 USD</span>
+          </div>
+          <img class="img" src="{{ item.image }}" alt="" />
+          <span> {{ item.name }}</span>
+          <p class="job">{{ item.species }}</p>
+          <button>Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
