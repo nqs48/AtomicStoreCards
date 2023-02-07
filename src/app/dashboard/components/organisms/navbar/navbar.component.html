@@ -1,0 +1,28 @@
+<div class="container-navbar p-2 main-container d-flex">
+
+  <div class="container-items profile-info d-flex justify-content-start align-items-center ">
+
+    <app-profile-image
+      class="profile-image d-flex align-items-center"
+      [urlImage]="src_img"
+    ></app-profile-image>
+
+    <app-text
+      class="text-navbar"
+      [textContent]="textContentText"
+    ></app-text>
+
+  </div>
+
+  <div class="container-items bg-dark main-cont-img">
+    <img class="cont-img" src="https://www.pngplay.com/wp-content/uploads/14/Rick-And-Morty-Logo-PNG-HD-Quality.png" alt="">
+  </div>
+
+  <div class="container-items justify-content-end me-2">
+    <app-button
+      [ngClassButton]="ngClassButton"
+      [textContent]="textContentButton"
+    ></app-button>
+  </div>
+
+</div>

@@ -1,0 +1,48 @@
+.container-navbar {
+  height: 12vh;
+  opacity: 0.93;
+  border-bottom: 1px dotted #064461;
+  border-radius: 0 0 15px 15px;
+  margin: 0 20px 0 20px;
+   -webkit-box-shadow: 1px 5px 60px 0px #100a886b;
+         box-shadow: 1px 5px 60px 0px #100a886b;
+}
+
+.profile-image {
+  width: 70px;
+  height: 70px;
+}
+
+.profile-image:hover{
+  cursor: pointer;
+  // transform: scale(1.1);
+}
+
+.profile-image:active{
+  transform: scale(0.9);
+}
+
+
+.container-items{
+  width: 34%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-cont-img{
+  opacity: 0.82;
+  border-radius: 0 0 15px 15px;
+}
+
+
+.cont-img{
+  height: 90%;
+  width: 50%;
+}
+
+.text-navbar{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(180, 186, 196);
+}
