@@ -1,0 +1,107 @@
+<div class="main-cont">
+  <div class="container">
+    <!-- Pills content -->
+    <div class="tab-content d-flex justify-content-center align-content-center">
+      <div
+        class="tab-pane fade show active h-100 m-5 rounded-3 container-form"
+        id="pills-login"
+        role="tabpanel"
+        aria-labelledby="tab-login"
+      >
+        <form
+          [formGroup]="formCreate"
+          (submit)="formCreate.valid && submitCreateUser()"
+          class="text-light m-4"
+        >
+          <div class="text-center mb-3">
+            <h4>New User:</h4>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              formControlName="userName"
+              type="text"
+              id="registerName"
+              class="form-control"
+            />
+            <label class="form-label" for="registerName">Name</label>
+
+            <small
+              *ngIf="formCreate.controls['userName'].touched"
+              class="text-danger block"
+              >{{ formCreate.get("userName")?.getError("invalidOrder") }}</small
+            >
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              formControlName="userUsername"
+              type="text"
+              id="registerUsername"
+              class="form-control"
+            />
+            <label class="form-label" for="registerUsername">Username</label>
+            <small
+              *ngIf="formCreate.controls['userUsername'].touched"
+              class="text-danger block"
+              >{{
+                formCreate.get("userUsername")?.getError("invalidOrder")
+              }}</small
+            >
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              formControlName="userEmail"
+              required
+              type="email"
+              id="registerEmail"
+              class="form-control"
+            />
+            <label class="form-label" for="registerEmail">Email</label>
+            <small
+              *ngIf="
+                formCreate.controls['userEmail'].touched &&
+                formCreate.get('userEmail')?.hasError('pattern')
+              "
+              class="text-danger block"
+            >
+              es invalido</small
+            >
+          </div>
+
+          <div class="form-outline mb-4">
+            <input
+              formControlName="userPassword"
+              type="password"
+              id="registerPassword"
+              class="form-control"
+            />
+            <label class="form-label" for="registerPassword">Password</label>
+            <small
+              *ngIf="
+                formCreate.controls['userPassword'].touched &&
+                formCreate.get('userPassword')?.hasError('pattern')
+              "
+              class="text-danger block"
+            >
+              es invalido</small
+            >
+          </div>
+
+          <button
+            [disabled]="!formCreate.valid"
+            type="submit"
+            class="btn btn-primary btn-block mb-3 w-100"
+          >
+            Register
+          </button>
+
+          <div class="text-center text-light">
+            <p>Are you a member? <a href="/login">Login</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

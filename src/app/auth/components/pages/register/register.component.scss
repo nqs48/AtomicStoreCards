@@ -1,0 +1,23 @@
+.main-cont {
+  //background-image: url(https://images.unsplash.com/photo-1541280910158-c4e14f9c94a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+
+  background-image: url(https://www.teahub.io/photos/full/12-123959_rick-morty-desktop-wallpaper-with-image-resolution-rick.jpg);
+ // background-color: #66c4e9;
+  min-height: 100vh;
+}
+
+.button-link {
+  padding: 1rem;
+  color: white;
+}
+
+.button-link:hover {
+  background-color: rgb(24, 167, 233);
+  color: white;
+}
+
+.container-form{
+  background-color:rgb(7, 39, 54) ;
+  opacity: 0.90;
+  width: 30%;
+}
