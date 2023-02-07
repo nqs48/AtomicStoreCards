@@ -1,0 +1,74 @@
+<div class="main-cont">
+  <div class="container">
+    <!-- Pills content -->
+    <div class="tab-content d-flex justify-content-center align-content-center ">
+      <div
+        class="tab-pane fade show active w-25 h-100 m-5 rounded-3 container-form"
+        id="pills-login"
+        role="tabpanel"
+        aria-labelledby="tab-login"
+      >
+        <form class="p-3" [formGroup]="formLogin" (submit)="formLogin.valid">
+          <div class="text-center mb-3 text-light">
+            <h4>Sign in with:</h4>
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4 text-light">
+            <input
+              formControlName="userUsername"
+              type="text"
+              id="loginName"
+              class="form-control"
+            />
+            <label class="form-label" for="loginName">Email</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4 text-light">
+            <input
+              formControlName="userPassword"
+              type="password"
+              id="loginPassword"
+              class="form-control"
+            />
+            <label class="form-label" for="loginPassword">Password</label>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            [disabled]="!formLogin.valid"
+            type="submit"
+            class="btn btn-primary w-100 mb-4"
+            (click)="loginFire('emailandpassword')"
+          >
+            Sign in
+          </button>
+
+          <!-- Register buttons -->
+          <div class="text-center text-light">
+            <p>Not a member? <a href="/register">Register</a></p>
+
+            <p>or sign up with:</p>
+
+            <button type="button" class="btn btn-link btn-floating mx-1 button-link" (click)="loginFire('google')">
+              <i class="bi bi-google"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1 button-link" (click)="loginFire('facebook')">
+              <i class="bi bi-facebook"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1 button-link" (click)="loginFire('twitter')">
+              <i class="bi bi-twitter"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-floating mx-1 button-link" (click)="loginFire('github')">
+              <i class="bi bi-github"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
