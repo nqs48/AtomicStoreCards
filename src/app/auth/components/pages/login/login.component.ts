@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { UserModel } from '../../../interface/user.model';
 import { LoginModel } from '../../../interface/login.Model';
+import { SwalService } from 'src/app/services/notifications/swal.service';
+import { ImagesService } from 'src/app/services/notifications/images.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { LoginModel } from '../../../interface/login.Model';
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
-  constructor(private router: Router, public $authService: AuthService) {
+  constructor(private router: Router,public $swal: SwalService, public $authService: AuthService, public $imgService: ImagesService) {
     this.formLogin = new FormGroup({
       userUsername: new FormControl('', [
         Validators.required,
@@ -37,30 +38,66 @@ export class LoginComponent implements OnInit {
       case 'google':
         this.$authService.loginWithGoogle().then(
           (res) => {
-            console.log('Usuario loggeado con exito', res);
-            this.router.navigate(['/dashboard/home']);
+            this.$swal.confirmationAnimated('User successfully logged in', this.$imgService.imageHappy).then
+            ((result) => {
+              if (result.isConfirmed) {
+                    this.router.navigate(['/dashboard/home']);
+              }
+            });
           },
           (err) => {
-            console.log('Error al crear usuario', err);
-            alert('Usuario o contraseña incorrectos');
+            this.$swal.errorMessage('Failed to login, try again', this.$imgService.imageError).then
+            ((result) => {
+              if (result.isConfirmed) {
+                  setTimeout(() => {
+                    this.router.navigate(['/login']);
+                  }, 1000);
+              }
+            });
           }
         );
         break;
       case 'emailandpassword':
         this.$authService.login(user).then(
           (res) => {
-            console.log('Usuario loggeado con exito', res);
-            alert('Usuario loggeado con exito');
-            this.router.navigate(['/dashboard/home']);
+            this.$swal.confirmationAnimated('User successfully logged in', this.$imgService.imageHappy).then
+            ((result) => {
+              if (result.isConfirmed) {
+
+                this.router.navigate(['/dashboard/home']);
+              }
+            }).catch
+            ((err) => {
+              this.$swal.errorMessage('Failed to login, try again', this.$imgService.imageError).then
+              ((result) => {
+                if (result.isConfirmed) {
+                    setTimeout(() => {
+                      this.router.navigate(['/login']);
+                    }, 1000);
+                }
+              });
+            }
+            );
           },
           (err) => {
-            console.log('Error al crear usuario', err);
-            alert('Usuario o contraseña incorrectos');
+            this.$swal.errorMessage('Wrong username or password', this.$imgService.imageError).then
+              ((result) => {
+                if (result.isConfirmed) {
+                    setTimeout(() => {
+                      this.router.navigate(['/login']);
+                    }, 1000);
+                }
+              });
           }
         );
         break;
       default:
-        alert('Este metodo de login aun no ha sido implementado');
+        this.$swal.errorMessage('Este metodo de login aun no ha sido implementado', this.$imgService.imageNotFound).then
+        ((result) => {
+          if (result.isConfirmed) {
+                this.router.navigate(['/login']);
+          }
+        });
         break;
     }
 
