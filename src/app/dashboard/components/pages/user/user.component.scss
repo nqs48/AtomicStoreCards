@@ -1,0 +1,316 @@
+.main-container{
+  background-image: url(https://www.teahub.io/photos/full/12-123959_rick-morty-desktop-wallpaper-with-image-resolution-rick.jpg);
+  background-size: cover;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container::-webkit-scrollbar {
+  padding: 1rem;
+  width: 2px;
+  background-color: #1a1a44;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background:  #1a1a44;
+
+}
+
+.cont-submain{
+  width: 100%;
+  height: 70%;
+  flex-direction: column;
+
+}
+
+.container-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.85;
+  padding: 2rem 2rem 2rem 2rem;
+  width: 85%;
+  min-height: 40%;
+  max-height: 90%;
+     -webkit-box-shadow: 1px 5px 60px 0px #100a886b;
+         box-shadow: 1px 5px 60px 0px #100a886b;
+}
+
+.container-items:hover{
+  opacity: 0.98;
+}
+
+.container-profile-image{
+  padding-right: 2rem;
+}
+
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+}
+
+.profile-image:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
+.text-navbar{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(180, 186, 196);
+}
+
+.profile-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+
+}
+
+
+.slider{
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+
+}
+
+.container-for{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    overflow-y: hidden;
+
+}
+
+.container-for::-webkit-scrollbar {
+  padding: 1rem;
+  height: 2px;
+  background-color: #1a1a44;
+}
+
+.container-for::-webkit-scrollbar-thumb {
+  background: rgb(63, 176, 221);
+
+}
+
+.container{
+ height: 100%;
+ width: 50%;
+}
+
+
+
+//Card
+
+.card {
+ width: 190px;
+ height: 280px;
+ background: #2d2442;
+
+ border-radius: 15px;
+
+ -webkit-box-shadow: 1px 5px 60px 0px #100a886b;
+         box-shadow: 1px 5px 60px 0px #100a886b;
+
+
+}
+
+.card:hover{
+    opacity: 0.95;
+    transform: scale(1.02);
+}
+
+.card .card-border-top {
+ width: 70%;
+ height: 10%;
+ background: #6b64f3;
+ margin: auto;
+ border-radius: 0px 0px 12px 12px;
+}
+
+.card span {
+ font-weight: 600;
+ color: white;
+ text-align: center;
+ display: block;
+ font-size: 16px;
+}
+
+.card .job {
+ font-weight: 400;
+ color: white;
+ display: block;
+ text-align: center;
+ padding-top: 3px;
+ font-size: 12px;
+}
+
+.card .img {
+ width: 80%;
+ height: 60%;
+ background: #6b64f3;
+ border-radius: 15px;
+ margin: auto;
+ margin-top: 20px;
+}
+
+
+.cont-buttons-main{
+  max-height: 25%;
+  opacity: 0.25;
+  transition: opacity 2000ms ease-in-out;
+}
+
+.cont-buttons-main:hover{
+  opacity: 1;
+  transition: opacity 900ms ease-in-out;
+}
+
+.cont-buttons{
+  position:absolute;
+  opacity: 0.85;
+  bottom: 0;
+}
+
+
+//Button Custom
+button {
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  outline: none;
+  border: 2px solid rgb(25, 105, 158);
+  margin: 45px;
+  margin-bottom: 35px;
+  margin-top: 30px;
+  width: 150px;
+  height: 60px;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #e4edf0;
+  -webkit-box-reflect: below 0px linear-gradient(transparent, #0002);
+  -webkit-transition: 0.45s;
+  transition: 0.45s;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+button:hover {
+  -webkit-transition-delay: 1.5s;
+          transition-delay: 1.5s;
+  color: #e5fffb;
+  -webkit-box-shadow: 0 0 10px rgb(25, 105, 158),
+                0 0 20px rgb(25, 105, 158),
+                0 0 40px rgb(25, 105, 158),
+                0 0 80px rgb(25, 105, 158),
+                0 0 100px rgb(25, 105, 158);
+          box-shadow: 0 0 10px rgb(25, 105, 158),
+                0 0 20px rgb(25, 105, 158),
+                0 0 40px rgb(25, 105, 158),
+                0 0 80px rgb(25, 105, 158),
+                0 0 100px rgb(25, 105, 158);
+}
+
+button span {
+  position: relative;
+  z-index: 100;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background: rgb(25, 105, 158);
+  -webkit-box-shadow: 5px -8px 0 rgb(25, 105, 158),
+              5px 8px 0 rgb(25, 105, 158);
+          box-shadow: 5px -8px 0 rgb(25, 105, 158),
+              5px 8px 0 rgb(25, 105, 158);
+  -webkit-transition: width 0.5s,
+              left 0.5s,
+              height 0.5s,
+              -webkit-box-shadow 0.5s;
+  transition: width 0.5s,
+              left 0.5s,
+              height 0.5s,
+              -webkit-box-shadow 0.5s;
+  transition: width 0.5s,
+              left 0.5s,
+              height 0.5s,
+              box-shadow 0.5s;
+  transition: width 0.5s,
+              left 0.5s,
+              height 0.5s,
+              box-shadow 0.5s,
+              -webkit-box-shadow 0.5s;
+  -webkit-transition-delay: 1s, 0.5s, 0s, 0s;
+          transition-delay: 1s, 0.5s, 0s, 0s;
+}
+
+button:hover::before {
+  width: 60%;
+  height: 100%;
+  /* right: -2px; */
+  left: -2px;
+  -webkit-box-shadow: 5px 0 0 rgb(25, 105, 158),
+              5px 0 0 rgb(25, 105, 158);
+          box-shadow: 5px 0 0 rgb(25, 105, 158),
+              5px 0 0 rgb(25, 105, 158);
+  -webkit-transition-delay: 0s, 0.5s, 1s, 1s;
+          transition-delay: 0s, 0.5s, 1s, 1s;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background: rgb(25, 105, 158);
+  -webkit-box-shadow: -5px -8px 0 rgb(25, 105, 158),
+              -5px 8px 0 rgb(25, 105, 158);
+          box-shadow: -5px -8px 0 rgb(25, 105, 158),
+              -5px 8px 0 rgb(25, 105, 158);
+  -webkit-transition: width 0.5s, right 0.5s, height 0.5s, -webkit-box-shadow 0.5s;
+  transition: width 0.5s, right 0.5s, height 0.5s, -webkit-box-shadow 0.5s;
+  transition: width 0.5s, right 0.5s, height 0.5s, box-shadow 0.5s;
+  transition: width 0.5s, right 0.5s, height 0.5s, box-shadow 0.5s, -webkit-box-shadow 0.5s;
+  -webkit-transition-delay: 1s, 0.5s, 0s, 0s;
+          transition-delay: 1s, 0.5s, 0s, 0s;
+}
+
+button:hover::after {
+  width: 60%;
+  height: 102%;
+  right: -2px;
+  -webkit-box-shadow: -5px 0 0 rgb(25, 105, 158), -5px 0 0 rgb(25, 105, 158);
+          box-shadow: -5px 0 0 rgb(25, 105, 158), -5px 0 0 rgb(25, 105, 158);
+  -webkit-transition-delay: 0s, 0.5s, 1s, 1s;
+          transition-delay: 0s, 0.5s, 1s, 1s;
+}
+
