@@ -1,22 +1,50 @@
 <div class="main-container">
   <app-navbar
-    [src_img]="currentUser?.photoURL"
-    [textContentText]="currentUser?.displayName"
+    [src_img]="currentUser && currentUser.photoUrl"
+    [textContentText]="currentUser && currentUser.userName"
+    [textContentTextBalance]="currentUser && currentUser.cash.toString() +' Dollars'"
   ></app-navbar>
-  <button (click)="logout()" class="btn btn-danger ">logout</button>
-  <div class="slider">
+  <div>
+
+    <div class="slider">
     <div class="container-for">
-      <div class="container" *ngFor="let item of charactersList">
-        <div class="card">
-          <div class="card-border-top">
-            <span>5 USD</span>
-          </div>
-          <img class="img" src="{{ item.image }}" alt="" />
-          <span> {{ item.name }}</span>
-          <p class="job">{{ item.species }}</p>
-          <button>Buy</button>
+      <div class="container" *ngFor="let item of charactersList ">
+        <div (click)="buyCard(item?.uid)"  class="card">
+
+            <div class="card-border-top">
+            <span>{{ item && item?.price }} USD</span>
+            </div>
+            <div class="card-border-left">
+              <span>{{ item && item?.cantity}}</span>
+            </div>
+            <img class="img" src="{{ item && item?.photoUrl }}" alt="" />
+            <div [ngClass]="{'close': item?.cantity == 0}"></div>
+            <span> {{ item?.name }}</span>
+            <p class="job">{{ item?.species }}</p>
+            <button>Buy</button>
+
+
+
         </div>
       </div>
     </div>
   </div>
+
+   <div class="cont-buttons-main d-flex justify-content-center">
+        <!-- <app-button
+        (click)="goBack()"
+        [ngClassButton]="ngClassButton"
+        [textContent]="textContentButton"
+      ></app-button> -->
+      <div class="cont-buttons bg-black">
+          <button (click)="goToUser()"><span>User</span></button>
+          <button (click)="logout()"  class="bg-danger"><span>Logout</span></button>
+          <button ><span>Info</span></button>
+      </div>
+
+
+    </div>
+
+  </div>
+
 </div>
