@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { ImagesService } from '../services/notifications/images.service';
 
 
 
@@ -18,5 +19,6 @@ import { RegisterComponent } from './components/pages/register/register.componen
     FormsModule,
     provideAuth(() => getAuth()),
   ],
+  providers:[ImagesService]
 })
 export class AuthModule {}
