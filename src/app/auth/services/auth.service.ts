@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, reload, signInWithEmailAndPassword, signInWithPopup, signOut, User } from '@angular/fire/auth';
 import { UserModel } from '../interface/user.model';
 import firebase from 'firebase/compat/app';
 import {
@@ -13,45 +13,29 @@ import {
   where,
   query,
   addDoc,
+  DocumentReference,
 } from '@angular/fire/firestore';
 import { LoginModel } from '../interface/login.Model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
+ currentUserClass!: User | null;
+ currentUserMapped!: UserModel;
 
-  constructor(private $authService: Auth, private $firestore: Firestore) {
-    // this.$authService.currentUser.then((user) => {
-    //   if (!user) {
-    //     return;
-    //   }
-    //   this.currentUser.uid = user.uid;
-    //   this.currentUser.userName = user.displayName;
-    //   this.currentUser.email = user.email;
-    //   this.currentUser.photoUrl = user.photoURL;
-    // });
-    // this.$authService.authState.subscribe((user) => {
-    //   if (!user ) {
-    //     return;
-    //   }
-    //   this.currentUser.uid = user.uid;
-    //   this.currentUser.userName = user.displayName;
-    //   this.currentUser.email = user.email;
-    //   this.currentUser.photoUrl = user.photoURL;
-    //   console.log('Estado del usuario: ', user);
-    //   console.log('Foto del usuario: ', this.currentUser.photoUrl);
-    // });
-  }
+ private refCollectionUser: any = collection(
+    this.$firestore,'users');
 
-  currentUserValue() {
-    return this.$authService.currentUser;
+
+  constructor(private $authService: Auth, public $firestore: Firestore) {
+    this.currentUserClass= this.$authService.currentUser;
   }
 
 
-
-
+  //Login and register
   register({ email, password }: LoginModel) {
     return createUserWithEmailAndPassword(this.$authService, email, password);
   }
@@ -75,9 +59,42 @@ export class AuthService {
     return signOut(this.$authService);
   }
 
-  // createUser(user: UserModel) {
-  //   const userRef = collection(this.$firestore, 'users');
-  //   return addDoc(userRef, user);
-  // }
+
+  //ACTIONS WITH THE USER
+
+  currentUserValue() {
+    const userMapped: UserModel= {
+      uid: this.currentUserClass?.uid,
+      userName: this.currentUserClass?.displayName,
+      email: this.currentUserClass?.email,
+      photoUrl: this.currentUserClass?.photoURL,
+      cards: [],
+      cash: 5,
+      cashForDay: 0,
+    };
+    return userMapped;
+  }
+
+  addNewUserToFirestore(user: UserModel) {
+    return addDoc(this.refCollectionUser, user);
+  }
+
+  getUserFirestore() : Observable<UserModel[]>{
+    if(!this.currentUserClass?.uid){
+      window.location.reload()
+    }
+    const q = query(this.refCollectionUser, where('uid', '==', this.currentUserClass?.uid));
+    return collectionData(q) as Observable<UserModel[]>;
+  }
+
+  updateUserFirestore(user: UserModel) {
+    return setDoc(doc(this.refCollectionUser,user.uid),user);
+
+  }
+
+
+
+
+
 }
 
