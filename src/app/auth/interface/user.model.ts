@@ -2,11 +2,11 @@ import { CardModel } from "./card.model";
 
 
 export interface UserModel {
-  uid?: string | null;
-  userName: string | null;
-  email: string | null;
-  photoUrl: string | null;
-  cards: CardModel[] | null;
-  cash: number | null;
-  cashForDay: number | null;
+  uid?: string;
+  userName: string | null | undefined;
+  email: string | null | undefined;
+  photoUrl: string | null | undefined;
+  cards: CardModel[];
+  cash: number;
+  cashForDay: number;
 }
