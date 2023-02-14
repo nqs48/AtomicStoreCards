@@ -1,27 +1,155 @@
-# AtomicGame
+# Store Card Online
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
+Technical challenge to evaluate the knowledge acquired in the sofka talent zone applying knowledge in the Angular framework, some applied topics: Reactive Forms, Observables, public API consumption.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This store consists of having a deck of Rick and Morty cards, you will find 60 characters with different styles and shapes, all of these cards have 5 units. You can view each of the cards and buy them depending on their value and balance of money in the account, .
 
-## Build
+- Key frontend and backend concepts
+- Angular project in frontend
+- Consumption of data API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# PROJECT REVIEW:
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Login with google
 
-## Further help
+Login with firebase and google (or with any authentication system).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![image](https://res.cloudinary.com/adev48/image/upload/v1676400980/Deployments/AtomicCard%20Store/login_md7enu.png)
+
+---
+
+## VIEW INFORMATION:
+
+### Event new window
+
+Event in each button to react to the **click** and redirect to another page with information.
+
+![image](https://res.cloudinary.com/adev48/image/upload/v1676400883/Deployments/AtomicCard%20Store/userScreen_ddpslx.png)
+
+---
+
+## LIST CARDS:
+
+### Public API consumption: Mapping data and list of cards, details of each card
+
+Detail of each card, making use of **Firebase** to save the information associated with the Api. Inventory management and sale of each letter
+
+![image](https://res.cloudinary.com/adev48/image/upload/v1676400882/Deployments/AtomicCard%20Store/suscribingDocuments_fvn13d.png)
+
+---
+
+## Account To-Up:
+
+### Top-Up limited money for Day: 
+
+Detail of cash added and saved , making use of **Firebase DataBase** to save the information associated with the money.
+
+![image](https://res.cloudinary.com/adev48/image/upload/v1676400885/Deployments/AtomicCard%20Store/recahrginAccount_txxrnz.png)
+
+---
+
+## FireBase Services:
+
+### Use of firebase authentication and database services
+
+![image](https://res.cloudinary.com/adev48/image/upload/v1676401440/Deployments/AtomicCard%20Store/firebaseConsole_csynho.png)
+
+
+---
+
+## Built With
+
+This section contains the platforms that were used for the project.
+
+
+### Frontend
+* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+
+* [bootstrap](https://getbootstrap.com/)
+* [Angular Framework](https://angular.io/)
+
+
+### Backend
+* [Firebase](https://console.firebase.google.com/)
+
+---
+
+### Installation for **FrontEnd Project**
+
+Install each one the pieces of software previously mentioned (Git).
+
+
+1. Clone the repo
+
+   - HTTPS 
+
+      ```
+      $ git clone https://github.com/nqs48/AtomicStoreCards.git
+      ```
+      
+    - SSH
+    
+      ```
+      $ git clone git@github.com:nqs48/AtomicStoreCards.git
+      ```
+
+2. Run `npm install` to download necesary the packages
+   ```
+   $ code .
+   ```
+ 
+ 
+3. Open the project with VisualStudio Code (In the root proyect directory)
+
+   ```
+   $ code .
+   ```
+   
+4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
+
+   ```
+   ng serve -o
+   ```
+   
+---
+
+
+
+---
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+---
+
+<!-- CONTACT -->
+## Collaborators
+```
+Nestor Quiroga Suarez
+Software Development Consultant
+
+```
+<p align="center">
+<br>
+<a href="https://www.linkedin.com/in/nqs48/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>&nbsp;&nbsp;
+<a href="https://api.whatsapp.com/send/?phone=573102095353&text=Hola+Nestea%2C+vi+tu+perfil+de+github+y+me+encanto+el+trabajo+que+haces%21%21&type=phone_number&app_absent=0"><img src="https://img.shields.io/badge/what's app-2d572c?style=for-the-badge&logo=whatsapp" alt="whats app" /></a>&nbsp;&nbsp;
+<a href="https://www.instagram.com/nqs48/"><img src="https://img.shields.io/badge/instagram-white?style=for-the-badge&logo=instagram" alt="Instagram"/>&nbsp;&nbsp;
+<a href="mailto:nqs48@hotmail.com"><img src="https://img.shields.io/badge/outlook-blue?&style=for-the-badge&logo=microsoft-outlook&logoColor=white" alt="outlook"/></a>
+</a>
+</p>
+<br>
+<p align='center'>
+  <a href="#top"><img src="https://img.shields.io/badge/Back to Top-black?" alt="back to top"/></a>
+</p>
