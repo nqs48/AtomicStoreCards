@@ -24,7 +24,11 @@ This store consists of having a deck of Rick and Morty cards, you will find 60 c
 
 Login with firebase and google (or with any authentication system).
 
-![image](https://res.cloudinary.com/adev48/image/upload/v1676400980/Deployments/AtomicCard%20Store/login_md7enu.png)
+   <p align="center">
+         <img src="https://res.cloudinary.com/adev48/image/upload/v1676400980/Deployments/AtomicCard%20Store/login_md7enu.png" width="100%"> 
+
+   </p>
+
 
 ---
 
@@ -34,7 +38,11 @@ Login with firebase and google (or with any authentication system).
 
 Event in each button to react to the **click** and redirect to another page with information.
 
-![image](https://res.cloudinary.com/adev48/image/upload/v1676400883/Deployments/AtomicCard%20Store/userScreen_ddpslx.png)
+   <p align="center">
+         <img src="https://res.cloudinary.com/adev48/image/upload/v1676400883/Deployments/AtomicCard%20Store/userScreen_ddpslx.png" width="100%"> 
+
+   </p>
+
 
 ---
 
@@ -42,9 +50,13 @@ Event in each button to react to the **click** and redirect to another page with
 
 ### Public API consumption: Mapping data and list of cards, details of each card
 
-Detail of each card, making use of **Firebase** to save the information associated with the Api. Inventory management and sale of each letter
+Detail of each card, making use of **Firebase** to save the information associated with the Api. Inventory management and sale of each card
 
-![image](https://res.cloudinary.com/adev48/image/upload/v1676400882/Deployments/AtomicCard%20Store/suscribingDocuments_fvn13d.png)
+   <p align="center">
+         <img src="https://res.cloudinary.com/adev48/image/upload/v1676400882/Deployments/AtomicCard%20Store/suscribingDocuments_fvn13d.png" width="100%"> 
+
+   </p>
+
 
 ---
 
@@ -54,7 +66,11 @@ Detail of each card, making use of **Firebase** to save the information associat
 
 Detail of cash added and saved , making use of **Firebase DataBase** to save the information associated with the money.
 
-![image](https://res.cloudinary.com/adev48/image/upload/v1676400885/Deployments/AtomicCard%20Store/recahrginAccount_txxrnz.png)
+   <p align="center">
+         <img src="https://res.cloudinary.com/adev48/image/upload/v1676400885/Deployments/AtomicCard%20Store/recahrginAccount_txxrnz.png" width="100%"> 
+
+   </p>
+
 
 ---
 
@@ -62,7 +78,10 @@ Detail of cash added and saved , making use of **Firebase DataBase** to save the
 
 ### Use of firebase authentication and database services
 
-![image](https://res.cloudinary.com/adev48/image/upload/v1676401440/Deployments/AtomicCard%20Store/firebaseConsole_csynho.png)
+   <p align="center">
+      <img src="https://res.cloudinary.com/adev48/image/upload/v1676401440/Deployments/AtomicCard%20Store/firebaseConsole_csynho.png" width="100%"> 
+
+   </p>
 
 
 ---
@@ -105,7 +124,7 @@ Install each one the pieces of software previously mentioned (Git).
 
 2. Run `npm install` to download necesary the packages
    ```
-   $ code .
+   $ npm install
    ```
  
  
@@ -115,6 +134,20 @@ Install each one the pieces of software previously mentioned (Git).
    $ code .
    ```
    
+
+4. **IMPORTANT** Conflict Version Angular v15 -> https://github.com/angular/angularfire/issues/3290. Fix it Manually at directory:
+
+   ```
+   $ cd node_modules/@angular/fire/compat/firestore/interfaces.d.ts
+   ```
+
+   <p align="center">
+      <img src="https://res.cloudinary.com/adev48/image/upload/v1676434031/Deployments/AtomicCard%20Store/issueAngularv15_iajj7a.png" width="60%"> 
+   </p>
+
+
+
+
 4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
 
    ```
