@@ -1,48 +1,51 @@
 <div class="main-container">
   <app-navbar
+    (clickEvent)="logout()"
     [src_img]="currentUser && currentUser.photoUrl"
+    [imageLogo]="imageLogo"
     [textContentText]="currentUser && currentUser.userName"
-    [textContentTextBalance]="currentUser && currentUser.cash.toString() +' Dollars'"
+    [textContentTextBalance]="currentUser && currentUser.cash.toString()+' USD'"
+    [ngClassBalance]="{'bg-danger': currentUser && currentUser.cash <= 0, 'bg-success': currentUser && currentUser.cash >= 10,'bg-warning': currentUser && currentUser.cash <= 9}"
   ></app-navbar>
   <div>
 
     <div class="slider">
-    <div class="container-for">
+    <div class="container-for" [ngClass]="{'d-flex justify-content-center': charactersList && charactersList.length == 0}">
+
+      <div *ngIf="charactersList?.length == 0">
+        <div class="d-flex justify-content-center align-items-center bg-black p-4">
+          <app-text
+            class="text-navbar"
+            [textContent]="'You do not have any characters, please click to DATA BUTTON'"
+          ></app-text>
+        </div>
+      </div>
+
       <div class="container" *ngFor="let item of charactersList ">
-        <div (click)="buyCard(item?.uid)"  class="card">
+
+        <div (click)="buyCard(item?.uid)" [ngClass]="{'opacity-50': item?.cantity == 0}" class="card">
 
             <div class="card-border-top">
             <span>{{ item && item?.price }} USD</span>
             </div>
-            <div class="card-border-left">
+            <div [ngClass]="{'bg-danger': item.cantity < 1, 'bg-success': item.cantity > 1,'bg-warning': item.cantity == 1}" class="card-border-left">
               <span>{{ item && item?.cantity}}</span>
             </div>
             <img class="img" src="{{ item && item?.photoUrl }}" alt="" />
-            <div [ngClass]="{'close': item?.cantity == 0}"></div>
+            <div [ngClass]="{'close text-danger': item?.cantity == 0}"></div>
             <span> {{ item?.name }}</span>
             <p class="job">{{ item?.species }}</p>
             <button>Buy</button>
-
-
-
         </div>
+
       </div>
     </div>
   </div>
 
    <div class="cont-buttons-main d-flex justify-content-center">
-        <!-- <app-button
-        (click)="goBack()"
-        [ngClassButton]="ngClassButton"
-        [textContent]="textContentButton"
-      ></app-button> -->
       <div class="cont-buttons bg-black">
-          <button (click)="goToUser()"><span>User</span></button>
-          <button (click)="logout()"  class="bg-danger"><span>Logout</span></button>
-          <button ><span>Info</span></button>
+          <app-buttonsbar (clickEvent)="listPlaceholder" [listPlacehoder]="listPlaceholder"></app-buttonsbar>
       </div>
-
-
     </div>
 
   </div>

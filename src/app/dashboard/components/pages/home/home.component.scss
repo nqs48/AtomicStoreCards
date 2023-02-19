@@ -1,10 +1,15 @@
 .main-container{
-  //background-color: #66c4e9;
   background-image: url(https://www.teahub.io/photos/full/12-123959_rick-morty-desktop-wallpaper-with-image-resolution-rick.jpg);
   background-size: cover;
   overflow: hidden;
   height: 100vh;
 
+}
+
+.text-navbar{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(180, 186, 196);
 }
 
 .slider{
@@ -17,6 +22,7 @@
 
 .container-for{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem;
     width: 80vw;
@@ -79,7 +85,7 @@
  left: 10%;
  width: 35px;
  height: fit-content;
- background: #118fb6;
+//  background: #118fb6;
  margin: auto;
  padding: 5px;
  border-radius: 100px;
@@ -116,15 +122,9 @@
  display: block;
  margin: auto;
  border-radius: 8px;
-//  border: none;
 background: #2bbeb7;
-//  color: white;
  font-weight: 600;
 }
-
-// .card button:hover {
-//  background: #0588f3;
-// }
 
 .card:active {
  transform: scale(0.98);
@@ -139,13 +139,12 @@ background: #2bbeb7;
   position: relative;
   &:after {
     position: absolute;
-    top: -140px;
+    top: -175px;
     bottom: 0;
-    left: 20px;
+    left: 43px;
     right: 0;
-    content: "\274c";
-    font-size: 110px;
-    color: #fff;
+    content: "x";
+    font-size: 220px;
     line-height: 100px;
     text-align: center;
   }
@@ -168,8 +167,6 @@ background: #2bbeb7;
   bottom: 0;
 }
 
-
-//Button Custom
 button {
   cursor: pointer;
   background: transparent;
@@ -193,27 +190,6 @@ button {
   transition: 0.45s;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-}
-
-button:hover {
-  -webkit-transition-delay: 1.5s;
-          transition-delay: 1.5s;
-  color: #e5fffb;
-  -webkit-box-shadow: 0 0 10px rgb(25, 105, 158),
-                0 0 20px rgb(25, 105, 158),
-                0 0 40px rgb(25, 105, 158),
-                0 0 80px rgb(25, 105, 158),
-                0 0 100px rgb(25, 105, 158);
-          box-shadow: 0 0 10px rgb(25, 105, 158),
-                0 0 20px rgb(25, 105, 158),
-                0 0 40px rgb(25, 105, 158),
-                0 0 80px rgb(25, 105, 158),
-                0 0 100px rgb(25, 105, 158);
-}
-
-button span {
-  position: relative;
-  z-index: 100;
 }
 
 button::before {
@@ -252,19 +228,6 @@ button::before {
           transition-delay: 1s, 0.5s, 0s, 0s;
 }
 
-button:hover::before {
-  width: 60%;
-  height: 100%;
-  /* right: -2px; */
-  left: -2px;
-  -webkit-box-shadow: 5px 0 0 rgb(25, 105, 158),
-              5px 0 0 rgb(25, 105, 158);
-          box-shadow: 5px 0 0 rgb(25, 105, 158),
-              5px 0 0 rgb(25, 105, 158);
-  -webkit-transition-delay: 0s, 0.5s, 1s, 1s;
-          transition-delay: 0s, 0.5s, 1s, 1s;
-}
-
 button::after {
   content: "";
   position: absolute;
@@ -288,12 +251,4 @@ button::after {
           transition-delay: 1s, 0.5s, 0s, 0s;
 }
 
-button:hover::after {
-  width: 60%;
-  height: 102%;
-  right: -2px;
-  -webkit-box-shadow: -5px 0 0 rgb(25, 105, 158), -5px 0 0 rgb(25, 105, 158);
-          box-shadow: -5px 0 0 rgb(25, 105, 158), -5px 0 0 rgb(25, 105, 158);
-  -webkit-transition-delay: 0s, 0.5s, 1s, 1s;
-          transition-delay: 0s, 0.5s, 1s, 1s;
-}
+
