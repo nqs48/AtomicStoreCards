@@ -19,10 +19,12 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -37,6 +39,7 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
     provideMessaging(() => getMessaging()),
     provideFunctions(() => getFunctions()),
   ],
+  exports:[AppRoutingModule],
   providers: [ApiService],
   bootstrap: [AppComponent],
 })
