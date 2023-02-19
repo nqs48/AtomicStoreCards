@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { SwalService } from 'src/app/services/notifications/swal.service';
@@ -13,24 +13,15 @@ export class NavbarComponent {
   @Input() src_img: string | null | undefined;
   @Input() textContentText: string | null | undefined;
   @Input() textContentTextBalance: string | null | undefined;
-  ngClassButton = 'btn btn-danger';
-  ngClassText = 'text-white fs-3';
-  textContentButton = 'Logout';
-  imageLogo= 'https://www.pngplay.com/wp-content/uploads/14/Rick-And-Morty-Logo-PNG-HD-Quality.png'
+  @Input() imageLogo: string | null | undefined;
+  @Input() ngClassBalance: any;
+  @Output() clickEvent: EventEmitter<MouseEvent> = new EventEmitter();
 
-  constructor(public $authService: AuthService,
-    public $router: Router,
-    public $swal: SwalService,
-    public $imgService: ImagesService) {}
+  constructor() {}
 
+    click(event: MouseEvent) {
+		  this.clickEvent.emit(event);
+	  }
 
-
-  goToUser(){
-    this.$swal.confirmationAnimated("Lets go to buy ",this.$imgService.imageToUser).then
-    (() => {
-          this.$router.navigate(['/dashboard/user']);
-    }
-    )
-  }
 
 }

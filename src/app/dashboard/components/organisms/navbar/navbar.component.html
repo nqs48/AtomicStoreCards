@@ -3,32 +3,28 @@
   <div class="container-items profile-info d-flex justify-content-start align-items-center ">
 
     <app-profile-image
-      (click)="goToUser()"
+      (click)="click($event)"
       class="profile-image d-flex align-items-center"
       [urlImage]="src_img"
     ></app-profile-image>
 
     <app-text
-      class="text-navbar"
+      class="text-navbar "
       [textContent]="textContentText"
     ></app-text>
 
   </div>
 
   <div class="container-items bg-dark main-cont-img">
-    <img class="cont-img" src="{{imageLogo}}" alt="">
+    <img class="cont-img" [src]="imageLogo" alt="">
   </div>
 
   <div class="container-items justify-content-end me-2">
     <app-text
-      class="text-navbar"
+      class="text-navbar p-2 rounded-2 text-light border border-2 "
+      [ngClass]="ngClassBalance"
       [textContent]="textContentTextBalance"
     ></app-text>
-    <!-- <app-button
-      (click)="logout()"
-      [ngClassButton]="ngClassButton"
-      [textContent]="textContentButton"
-    ></app-button> -->
   </div>
 
 </div>
