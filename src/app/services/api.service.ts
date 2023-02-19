@@ -14,71 +14,60 @@ export class ApiService {
 
   private refCollectionCards: any = collection(
     this.$firestore,'cards');
-
-  listApi: any;
+  pages: number= 4;
+  listApi: any[]=[];
   cardList!: CardModel[];
 
-  constructor(private httpService$: HttpClient, private $firestore: Firestore) {
+  constructor(private httpService$: HttpClient, private $firestore: Firestore) {}
 
-    //TODO IMPROVE THE METHOD TO MAP THE CARDS
-    //  this.getData().subscribe((data:any) => {
-    //   this.listApi=data.results
-    //   this.cardList= this.listApi.map((e: any) => {
-    //     return {
-    //       uid: e.id,
-    //       name: e.name,
-    //       status: e.status,
-    //       species: e.species,
-    //       cantity: 5,
-    //       price: this.randomPrice(5,240),
-    //       photoUrl: e.image,
-    //       avalaible: true,
-    //     }
-    //   });
-
-    //   this.cardList.forEach((element: any) => {
-    //       addDoc(this.refCollectionCards, element);
-    //     });
-
-    //   console.log(this.cardList);
-    // });
-
-  }
-
-    //TODO VALIDATE IF CARD COLLECTION EXITS
-    //Validating if collection exits
-    // async validateCollection(){
-
-    //   const docRef= doc(this.$firestore,"cards")
-    //   const docSnap= await getDoc(docRef);
-
-    //   if(docSnap.exists()){
-    //     console.log('Collection exists');
-    //      console.log("Document data:", docSnap.data());
-    //   }else{
-    //     console.log('Collection does not exists');
-    //     this.cardList.forEach((element: any) => {
-    //       addDoc(this.refCollectionCards, element);
-    //     });
-    //   }
-
-    // }
-
-    randomPrice(min: number, max: number): number {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
 
     //Get Data from Public API
-    getData(){
-      return this.httpService$.get('https://rickandmortyapi.com/api/character?page=3');
+    getData(numPage: number){
+      return this.httpService$.get(`https://rickandmortyapi.com/api/character/?page=${numPage}`);
     }
 
+    //Mapping Data
+    mapData():void{
+      for(let index = 1; index <= this.pages; index++) {
+        this.getData(index).subscribe((data:any) => {
+          this.listApi=data.results
+          this.cardList= this.listApi.map((e: any) => {
+            return {
+              uid: e.id,
+              name: e.name,
+              status: e.status,
+              species: e.species,
+              cantity: 5,
+              price: this.randomPrice(5,120),
+              photoUrl: e.image,
+              avalaible: true,
+            };
+          });
+
+          this.cardList.forEach((element: any) => {
+            addDoc(this.refCollectionCards, element);
+          });
+
+          console.log(this.cardList);
+        }).unsubscribe;
+      }
+    }
+
+    //Get Random Price
+    randomPrice(min: number, max: number): number {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+    }
+
+
+
+    //Get Cards from Firestore
     getCardsFirebase(): Observable<CardModel[]>{
       const cards= collectionData(this.refCollectionCards,{idField: 'uid'}) as Observable<CardModel[]>
       return cards;
     }
 
-    updateCardFirestore(card: CardModel) {
+    //Update Card
+    updateCardFirestore(card: CardModel): Promise<void> {
     return setDoc(doc(this.refCollectionCards,card.uid),card);
 
   }

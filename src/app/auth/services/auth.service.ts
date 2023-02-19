@@ -23,7 +23,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
- currentUserClass!: User | null;
+ currentUserClass!: User ;
  currentUserMapped!: UserModel;
 
  private refCollectionUser: any = collection(
@@ -31,7 +31,11 @@ export class AuthService {
 
 
   constructor(private $authService: Auth, public $firestore: Firestore) {
-    this.currentUserClass= this.$authService.currentUser;
+    if(this.$authService.currentUser){
+      this.currentUserClass= this.$authService.currentUser;
+      console.log(this.currentUserClass);
+    }
+
   }
 
 
@@ -64,12 +68,12 @@ export class AuthService {
 
   currentUserValue() {
     const userMapped: UserModel= {
-      uid: this.currentUserClass?.uid,
+      uid:this.currentUserClass.uid,
       userName: this.currentUserClass?.displayName,
       email: this.currentUserClass?.email,
       photoUrl: this.currentUserClass?.photoURL,
       cards: [],
-      cash: 5,
+      cash: 100,
       cashForDay: 0,
     };
     return userMapped;
