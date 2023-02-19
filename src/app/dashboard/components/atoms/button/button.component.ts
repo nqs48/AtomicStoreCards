@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -6,6 +6,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
-  @Input() textContent: string | null | undefined = '';
-  @Input() ngClassButton: string | null | undefined = '';
+  @Input() placeholder: string = '';
+  @Input() class: string = '';
+ 	@Output() clickEvent: EventEmitter<MouseEvent> = new EventEmitter();
+
+
+  click(event: MouseEvent) {
+		this.clickEvent.emit(event);
+	}
+
+
 }
