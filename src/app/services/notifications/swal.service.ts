@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import Swal from 'sweetalert2';
-import { ImagesService } from './images.service';
+import Swal, { SweetAlertResult } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,46 @@ export class SwalService {
   colorText: string = '#adb5bd';
 
   constructor() { }
+
+
+  mappingData(message: string, imageUrl: string): Promise<SweetAlertResult<any>>{
+    let timerInterval: string | number | NodeJS.Timer | undefined;
+    return Swal.fire({
+      title: message,
+      imageUrl: imageUrl,
+      imageWidth: 400,
+      imageHeight: 200,
+      background: "rgba(0, 8, 20, 0.8)",
+      html: 'I will close in <b class="view"></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer()?.querySelector('b')
+        timerInterval = setInterval(() => {
+          if(b != undefined){
+            b.textContent = Swal.getTimerLeft()?.toString() || ''
+          }
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      },
+      customClass:{
+        popup:"card-custom"
+      },
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__zoomOutDown',
+
+      },
+      backdrop: `
+    rgba(51, 56, 86, 0.5)
+  `,
+    })
+  }
 
   successMessage(message = 'The operation was carried out successfully', imageUrl: string) {
     return Swal.fire({
@@ -45,10 +84,11 @@ export class SwalService {
     footer: string = 'Check the information entered'
   ) {
     return Swal.fire({
-      icon: 'error',
       title: 'Oops...',
       text: message,
       imageUrl: imageUrl,
+      imageWidth: 400,
+      imageHeight: 200,
       background: "rgba(0, 8, 20, 0.8)",
       color: this.colorText,
       footer: footer,
@@ -75,6 +115,8 @@ export class SwalService {
       color: this.colorText,
       icon: 'warning',
       imageUrl: imageUrl,
+      imageWidth: 400,
+      imageHeight: 200,
       showCancelButton: true,
       cancelButtonColor: '#fa3007',
       confirmButtonColor: '#673ab7',
@@ -94,6 +136,8 @@ export class SwalService {
       title: title,
       background: "rgba(0, 8, 20, 0.8)",
       imageUrl: imageUrl,
+      imageWidth: 400,
+      imageHeight: 200,
       color: this.colorText,
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
