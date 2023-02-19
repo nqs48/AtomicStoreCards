@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center">
+  <div *ngFor="let button of listPlacehoder">
+    <app-button (clickEvent)="button.method($event)" [class]="button.class" [placeholder]="button.placeholder"></app-button>
+  </div>
+</div>
+
