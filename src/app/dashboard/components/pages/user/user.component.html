@@ -1,8 +1,10 @@
 <div class="main-container">
   <app-navbar
-    [src_img]="currentUser && currentUser?.photoUrl"
-    [textContentText]="currentUser?.userName"
-    [textContentTextBalance]="currentUser && currentUser.cash.toString() + ' Dollars'"
+    [src_img]="currentUser && currentUser.photoUrl"
+    [imageLogo]="imageLogo"
+    [textContentText]="currentUser && currentUser.userName"
+    [textContentTextBalance]="currentUser && currentUser.cash.toString()+' USD'"
+    [ngClassBalance]="{'bg-danger': currentUser && currentUser.cash <= 0, 'bg-success': currentUser && currentUser.cash >= 10,'bg-warning': currentUser && currentUser.cash <= 9}"
   ></app-navbar>
 
   <div class="cont-submain d-flex justify-content-center align-items-center">
@@ -11,17 +13,17 @@
       <div class="container-profile-image" >
         <app-profile-image
         class="profile-image d-flex justify-content-center align-items-center"
-        [urlImage]="currentUser && currentUser?.photoUrl"
+        [urlImage]="currentUser && currentUser.photoUrl"
         ></app-profile-image>
 
         <div class="profile-info d-flex justify-content-center align-content-center bg-dark">
           <app-text class="text-navbar"
-            [textContent]="currentUser && currentUser?.userName"
+            [textContent]="currentUser && currentUser.userName"
           ></app-text>
 
           <app-text
             class="text-navbar"
-            [textContent]="currentUser && currentUser?.cash + ' USD'"
+            [textContent]="currentUser && currentUser.cash + ' USD'"
           ></app-text>
         </div>
 
@@ -31,7 +33,17 @@
 
 
       <div class="slider">
-        <div class="container-for">
+        <div class="container-for" [ngClass]="{'d-flex justify-content-center': charactersList && charactersList.length == 0}">
+          <div *ngIf="charactersList?.length == 0" >
+            <div class="d-flex justify-content-center align-items-center bg-dark p-4">
+              <app-text
+                class="text-navbar"
+                [textContent]="
+                  'You do not have any characters, please go to the store to buy one'
+                "
+              ></app-text>
+            </div>
+          </div>
           <div class="container" *ngFor="let item of charactersList ">
             <div class="card">
               <div class="card-border-top">
@@ -47,19 +59,10 @@
 
     </div>
 
-    <div class="cont-buttons-main d-flex justify-content-center">
-        <!-- <app-button
-        (click)="goBack.bind(this)"
-        [ngClassButton]="ngClassButton"
-        [textContent]="textContentButton"
-      ></app-button> -->
+   <div class="cont-buttons-main d-flex justify-content-center">
       <div class="cont-buttons bg-black">
-        <button (click)="goHome()"><span>Home</span></button>
-        <button (click)="logout()" class="bg-danger"><span>Logout</span></button>
-        <button (click)="recharge()"><span>Recharge</span></button>
+          <app-buttonsbar [listPlacehoder]="listPlaceholder"></app-buttonsbar>
       </div>
-
-
     </div>
 
   </div>

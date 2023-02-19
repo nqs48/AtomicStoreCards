@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { CardModel } from 'src/app/auth/interface/card.model';
 import { UserModel } from 'src/app/auth/interface/user.model';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { ActionDashboardService } from 'src/app/services/actions/action.dashboard.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ImagesService } from 'src/app/services/notifications/images.service';
 import { SwalService } from 'src/app/services/notifications/swal.service';
+import { buttonInfo } from 'src/app/shared/types/buttonInfo.type';
 
 @Component({
   selector: 'app-user',
@@ -13,10 +15,11 @@ import { SwalService } from 'src/app/services/notifications/swal.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit{
-
+  imageLogo: string;
   ngClassButton = 'btn';
   ngClassText = 'text-white fs-3';
   textContentButton = 'Home';
+  listPlaceholder: buttonInfo[];
 
   charactersList: CardModel[] | null | undefined;
   currentUser!: UserModel;
@@ -26,19 +29,19 @@ export class UserComponent implements OnInit{
     public $authService: AuthService,
     public $router: Router,
     public $swal: SwalService,
-    public $imgService: ImagesService
+    public $imgService: ImagesService,
+    public $actionRedirect: ActionDashboardService
   ) {
-
+    this.imageLogo = this.$imgService.imageLogo;
+    this.listPlaceholder=[
+      {class: 'bg-black', placeholder: 'Home', method: ()=>this.$actionRedirect.goToHome()},
+      {class: 'bg-danger', placeholder: 'Logout', method: ()=>this.$actionRedirect.logout()},
+      {class: 'bg-black', placeholder: 'top up', method: ()=>this.recharge()}
+    ];
   }
 
-
-
-
   ngOnInit(): void {
-
     this.charactersList= this.$authService.currentUserValue().cards;
-
-
     this.$authService.getUserFirestore().subscribe
     ((data) => {
         this.currentUser= data[0];
@@ -47,31 +50,8 @@ export class UserComponent implements OnInit{
     )
   }
 
-  logout() {
-      this.$authService
-        .logout()
-        .then(() => {
-          this.$swal.confirmationAnimated("The session was successfully closed", this.$imgService.imageHappy).then
-          ((result) => {
-            if (result.isConfirmed) {
-                this.$router.navigate(['/login']);
-            }
-          })
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  }
-
-  goHome() {
-    this.$swal.confirmationAnimated("Lets go to buy ", this.$imgService.imageHappy).then
-    (() => {
-          this.$router.navigate(['/dashboard/home']);
-    });
-  }
 
   recharge(){
-
     this.$swal.confirmationRecharge(this.$imgService.imageHappyMoney).then
     ((result) => {
       if (result.isConfirmed) {
@@ -100,10 +80,8 @@ export class UserComponent implements OnInit{
         );
 
       }
-  })
-}
-
-
+    })
+  }
 
 
 }
