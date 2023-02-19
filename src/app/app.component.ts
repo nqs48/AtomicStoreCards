@@ -8,4 +8,6 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent{
 
+  title="atomic-game";
+
 }

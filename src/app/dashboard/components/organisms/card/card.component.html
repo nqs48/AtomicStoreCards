@@ -5,5 +5,20 @@
   </div>
   <app-text  [textContent]="textContentTitle"></app-text>
   <app-text class="job" [textContent]="textContentSubtitle"></app-text>
-  <app-button [textContent]="textContentButton" [ngClassButton]="ngClassButton"></app-button>
+  <!-- <app-button [textContent]="textContentButton" [ngClassButton]="ngClassButton"></app-button> -->
 </div>
+
+<!-- <div (click)="buyCard(item?.uid)" [ngClass]="{'opacity-50': item?.cantity == 0}" class="card">
+  <div class="card-border-top">
+    <span>{{ item && item?.price }} USD</span>
+  </div>
+  <div [ngClass]="{'bg-danger': item.cantity < 1, 'bg-success': item.cantity > 1,'bg-warning': item.cantity == 1}" class="card-border-left">
+    <span>{{ item && item?.cantity}}</span>
+  </div>
+  <img class="img" src="{{ item && item?.photoUrl }}" alt="" />
+  <div [ngClass]="{'close text-danger': item?.cantity == 0}">
+  </div>
+    <span> {{ item?.name }}</span>
+    <p class="job">{{ item?.species }}</p>
+    <button>Buy</button>
+</div> -->
