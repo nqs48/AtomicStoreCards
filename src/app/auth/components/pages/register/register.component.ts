@@ -48,12 +48,12 @@ export class RegisterComponent {
 
   validateUsername(control: AbstractControl) {
     return control.value.length > 20
-      ? { invalidOrder: ' debe ser menor de 20 caracteres' }
+      ? { invalidOrder: ' must be less than 20 characters' }
       : null;
   }
   validateRequired(control: AbstractControl) {
     return control.value === ''
-      ? { invalidOrder: ' es un campo requerido' }
+      ? { invalidOrder: ' is a required field' }
       : null;
   }
 
