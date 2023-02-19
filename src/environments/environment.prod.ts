@@ -1,12 +1,12 @@
 export const environment = {
   firebase: {
-    projectId: 'atomic-game-6419c',
-    appId: '1:715912356968:web:26c5960b2465d38ab587dd',
-    storageBucket: 'atomic-game-6419c.appspot.com',
+    apiKey: "AIzaSyAYCfR3z9i_lIfJXJ6NQrAa_7sodyrV3Jg",
+    authDomain: "atomic-store-card.firebaseapp.com",
+    projectId: "atomic-store-card",
+    storageBucket: "atomic-store-card.appspot.com",
+    messagingSenderId: "323968160800",
+    appId: "1:323968160800:web:16f631d78026278ab59845",
     locationId: 'us-central',
-    apiKey: 'AIzaSyAzi7Nl22fTBaCTo_3TnGW2inhtg7KLMZM',
-    authDomain: 'atomic-game-6419c.firebaseapp.com',
-    messagingSenderId: '715912356968',
   },
   production: false,
   baseUrlApi: 'https://rickandmortyapi.com/api/character',
