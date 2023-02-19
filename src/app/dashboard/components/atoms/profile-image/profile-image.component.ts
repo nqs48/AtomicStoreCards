@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-profile-image',
@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ProfileImageComponent {
   @Input() urlImage: string | null | undefined;
+  @Output() clickEvent: EventEmitter<MouseEvent> = new EventEmitter();
+
+  click(event: MouseEvent) {
+		this.clickEvent.emit(event);
+	}
 }
