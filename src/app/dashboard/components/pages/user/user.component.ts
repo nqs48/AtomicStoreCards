@@ -58,7 +58,7 @@ export class UserComponent implements OnInit{
         let accumulatedForDay= this.currentUser.cashForDay + parseInt(result.value);
         if(accumulatedForDay > 200){
 
-          this.$swal.errorMessage('You have exceeded the limit of $ 200 per day',this.$imgService.imageError);
+          this.$swal.errorMessage(`You have exceeded the limit of $ 200 per day \nActually: ${this.currentUser.cashForDay}/200 USD `,this.$imgService.imageError);
           return;
         }
         this.currentUser.cash = this.currentUser.cash + parseInt(result.value);
